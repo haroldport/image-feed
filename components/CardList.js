@@ -27,9 +27,9 @@ export default class CardList extends Component {
             <Card
                 fullname={author}
                 image={{
-                    uri: getImageFromId(id)
+                    uri: getImageFromId(id),
                 }}
-                linkText={`${comments ? comments.lenght : 0} Comments`}
+                linkText={`${comments && comments !== undefined ? comments.length : 0} Comments`}
                 onPressLinkText={() => onPressComments(id)}
             />
         )
@@ -41,9 +41,9 @@ export default class CardList extends Component {
         return (
             <FlatList 
                 data={items}
+                extraData={commentsForItem}
                 renderItem={this.renderItem}
                 keyExtractor={keyExtractor}
-                extraData={commentsForItem}
             />
         )
 
